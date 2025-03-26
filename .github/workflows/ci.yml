@@ -16,5 +16,8 @@ jobs:
         run: pip install --upgrade pip
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Install custom pygam module
+        run: pip install -e ./custom_modules/pygam
       - name: Run your tests
         run: python -m unittest discover
+
