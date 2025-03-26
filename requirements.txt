@@ -4,4 +4,4 @@ numpy==2.2.3
 scikit-learn
 openpyxl
 pygam
-git+https://github.com/ObliviousSpaces/Reach-Frequency-Calculator.git@main#egg=pygam&subdirectory=custom_modules/pygam
+-e ./custom_modules/pygam
