@@ -8,7 +8,7 @@ import math
 # Cache the data load function so it isn’t re-run unnecessarily
 @st.cache_data
 def load_data():
-    df = pd.read_excel(r"C:\Users\paris\Downloads\CombinedDataV3.xlsx", sheet_name='CombinedData')
+    df = pd.read_excel(r"CombinedDataV3.xlsx", sheet_name='CombinedData')
     df.columns = [col.strip() for col in df.columns]
     df = df.dropna(subset=['Impressions', 'Flight Period', 'Reach', 'Audience Size', 'Frequency', 'Frequency Cap Per Flight'])
     cols = ['Impressions', 'Audience Size', 'Flight Period', 'Reach', 'Frequency', 'Frequency Cap Per Flight']
