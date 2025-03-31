@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestRegressor
 import pygam
 from pygam import LinearGAM, s
 import math
+from scipy.sparse import issparse
 
 # Retrieve the version of pygam
 pygam_version = pygam.__version__
@@ -38,9 +39,12 @@ def train_models(df):
     y_reach = df['Log_Reach']
     y_frequency = df['Log_Frequency']
     
-    # Convert to dense array if X is a sparse matrix
-    X = X.to_numpy() if hasattr(X, "to_numpy") else X
-
+    # Convert X to a dense NumPy array if it's sparse, else to a NumPy array
+    if issparse(X):
+        X = X.toarray()
+    else:
+        X = X.to_numpy()
+    
     # Train Random Forest models
     reach_model_rf = RandomForestRegressor(n_estimators=500, random_state=42)
     reach_model_rf.fit(X, y_reach)
@@ -56,7 +60,6 @@ def train_models(df):
     gam_freq.fit(X, y_frequency)
     
     return reach_model_rf, freq_model_rf, gam_reach, gam_freq
-
 
 def calculate_frequency_cap(frequency_input, option, flight_period):
     if option == "Day":
