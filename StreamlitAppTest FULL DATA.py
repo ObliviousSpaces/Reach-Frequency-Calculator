@@ -39,11 +39,10 @@ def train_models(df):
     y_reach = df['Log_Reach']
     y_frequency = df['Log_Frequency']
     
-    # Convert X to a dense NumPy array if it's sparse, else to a NumPy array
+    # Force X to a dense NumPy array
+    X = np.array(X)  # This will convert the DataFrame to a dense array
     if issparse(X):
         X = X.toarray()
-    else:
-        X = X.to_numpy()
     
     # Train Random Forest models
     reach_model_rf = RandomForestRegressor(n_estimators=500, random_state=42)
@@ -86,11 +85,14 @@ def predict_metrics(impressions, audience_size, flight_period, frequency_cap,
         columns=['Log_Impressions', 'Log_Audience', 'Log_Flight', 'Log_Frequency Cap Per Flight']
     )
     
+    # Convert input_data to a dense NumPy array
+    X_input = np.array(input_data)
+    
     # Make predictions using both models
-    log_predicted_reach_rf = reach_model_rf.predict(input_data)[0]
-    log_predicted_freq_rf = freq_model_rf.predict(input_data)[0]
-    log_predicted_reach_gam = gam_reach.predict(input_data)[0]
-    log_predicted_freq_gam = gam_freq.predict(input_data)[0]
+    log_predicted_reach_rf = reach_model_rf.predict(X_input)[0]
+    log_predicted_freq_rf = freq_model_rf.predict(X_input)[0]
+    log_predicted_reach_gam = gam_reach.predict(X_input)[0]
+    log_predicted_freq_gam = gam_freq.predict(X_input)[0]
     
     # Reverse the log transformation
     predicted_reach_rf = np.expm1(log_predicted_reach_rf)
