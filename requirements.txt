@@ -3,4 +3,4 @@ pandas
 numpy==2.2.3 
 scikit-learn
 openpyxl
--e git+https://github.com/ObliviousSpaces/Reach-Frequency-Calculator.git#egg=pygam&subdirectory=custom_modules/pygam2
+-e git+https://github.com/ObliviousSpaces/Reach-Frequency-Calculator.git#egg=pygam&subdirectory=custom_modules/pygam
