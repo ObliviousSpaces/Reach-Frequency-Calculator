@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
-from pygam2 import LinearGAM, s
+from pygam import LinearGAM, s
 import math
 
 # Cache the data load function so it isn’t re-run unnecessarily
