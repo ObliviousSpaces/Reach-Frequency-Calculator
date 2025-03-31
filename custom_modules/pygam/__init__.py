@@ -5,7 +5,7 @@ GAM toolkit
 from __future__ import absolute_import
 
 # Use relative imports instead of absolute ones.
-from .pygam2 import GAM, LinearGAM, LogisticGAM, GammaGAM, PoissonGAM, InvGaussGAM, ExpectileGAM
+from .pygam import GAM, LinearGAM, LogisticGAM, GammaGAM, PoissonGAM, InvGaussGAM, ExpectileGAM
 from .terms import l, s, f, te, intercept
 
 __all__ = [
