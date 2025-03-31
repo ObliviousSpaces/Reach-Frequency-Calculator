@@ -1,6 +1,6 @@
 streamlit
 pandas
-numpy
+numpy==1.23
 scikit-learn
 openpyxl
 pygam
