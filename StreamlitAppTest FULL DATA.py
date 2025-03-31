@@ -5,6 +5,12 @@ from sklearn.ensemble import RandomForestRegressor
 from pygam import LinearGAM, s
 import math
 
+# Retrieve the version of pygam
+pygam_version = pygam.__version__
+
+# Display the version in your Streamlit app
+st.write(f"pygam version: {pygam_version}")
+
 # Cache the data load function so it isn’t re-run unnecessarily
 @st.cache_data
 def load_data():
